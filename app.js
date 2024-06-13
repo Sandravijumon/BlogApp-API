@@ -55,6 +55,19 @@ app.post("/signin",(req,res)=>{
                     ).catch() .catch()
 })
 
+app.post("/viewers",(req,res)=>{
+    let token=req.headers["token"]
+    jwt.verify(token,"blog-app",(error,decoded)=>{
+        if(decoded)
+            {
+                blogmodel.find().then(
+                    (response)=>{
+                        res.json(res)
+                    }
+                )
+            }
+    })
+})
 
 app.listen(8081,()=>{
     console.log("Server started")
